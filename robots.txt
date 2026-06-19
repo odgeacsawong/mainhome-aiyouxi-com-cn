@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://odgeacsawong.github.io/mainhome-aiyouxi-com-cn/sitemap.xml

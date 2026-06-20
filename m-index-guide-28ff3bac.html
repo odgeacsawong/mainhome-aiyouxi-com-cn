@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麻将胡了 · 规则速查与玩法导航</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f3f0;
+            color: #1f2a36;
+            line-height: 1.6;
+        }
+        a { color: #b85a2b; text-decoration: none; border-bottom: 1px solid transparent; transition: border 0.2s; }
+        a:hover { border-bottom-color: #b85a2b; }
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #1a232e 0%, #2b333f 100%);
+            padding: 80px 0 60px;
+            color: #edeae5;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: #f5f3f0;
+            border-radius: 50% 50% 0 0;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            margin-bottom: 16px;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+        .hero .tagline {
+            margin-top: 24px;
+            display: inline-block;
+            background: rgba(255,255,255,0.08);
+            padding: 8px 22px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* 浅色正文区 */
+        .section {
+            padding: 56px 0 40px;
+        }
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 500;
+            color: #1f2a36;
+            margin-bottom: 32px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d9cdbe;
+            display: inline-block;
+        }
+
+        /* 主视觉卡片——三栏信息卡 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 12px;
+        }
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 28px 22px 32px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e8e2da;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+        }
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1f2a36;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #3f4a57;
+            margin-bottom: 6px;
+        }
+        .card .sub {
+            font-size: 0.85rem;
+            color: #7a7f89;
+            margin-top: 8px;
+            border-top: 1px solid #eee9e3;
+            padding-top: 10px;
+        }
+
+        /* 人群卡片（两栏） */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 16px 0 8px;
+        }
+        .audience-item {
+            background: white;
+            border-radius: 12px;
+            padding: 18px 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border-left: 4px solid #b85a2b;
+        }
+        .audience-item h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .audience-item p {
+            font-size: 0.9rem;
+            color: #47525e;
+        }
+
+        /* 自然链接段落 */
+        .link-paragraph {
+            background: white;
+            border-radius: 14px;
+            padding: 32px 28px;
+            margin: 16px 0 24px;
+            line-height: 1.8;
+            font-size: 1.02rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #eae3db;
+        }
+        .link-paragraph strong {
+            color: #1f2a36;
+        }
+
+        /* FAQ摘要 */
+        .faq-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin: 24px 0 12px;
+        }
+        .faq-item {
+            background: transparent;
+            padding: 10px 0;
+            border-bottom: 1px dotted #d6cec3;
+        }
+        .faq-item q {
+            font-weight: 500;
+            color: #2a353f;
+        }
+        .faq-item .ans {
+            font-size: 0.9rem;
+            color: #55606b;
+            margin-top: 4px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 860px) {
+            .hero h1 { font-size: 2rem; }
+            .card-grid { grid-template-columns: 1fr 1fr; }
+            .audience-grid { grid-template-columns: 1fr; }
+            .faq-summary { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 540px) {
+            .hero { padding: 56px 0 40px; }
+            .hero h1 { font-size: 1.6rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            .section { padding: 36px 0 24px; }
+            .link-paragraph { padding: 20px 16px; }
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #727a86;
+            padding: 32px 0 40px;
+            border-top: 1px solid #e0d8ce;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="container">
+        <h1>麻将胡了 · 玩法速览</h1>
+        <p>面向希望快速了解麻将规则、番种构成与和牌逻辑的玩家，聚合常用牌型图解与番值参考。</p>
+        <span class="tagline">信息卡片式导航 · 规则即用</span>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- 主视觉卡片区 -->
+    <section class="section">
+        <h2 class="section-title">牌型 · 番种 · 和牌</h2>
+        <div class="card-grid">
+            <div class="card">
+                <span class="card-icon">🀄</span>
+                <h3>基本和牌型</h3>
+                <p>标准4组面子+1对将牌，包含顺子、刻子及杠后补牌。可快速核对是否满足和牌条件。</p>
+                <div class="sub">含门清、自摸、点炮场景</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">🧮</span>
+                <h3>番种速查</h3>
+                <p>从平和、三色同顺到清一色、字一色，常用番种归类展示，附番值范围与组合限制。</p>
+                <div class="sub">国标 / 日本 / 地方规则</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">🔁</span>
+                <h3>听牌与报牌</h3>
+                <p>多面听、振听、立直等进阶判断，以及鸣牌（吃碰杠）对听牌的影响。</p>
+                <div class="sub">适合从入门到进阶</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 适合人群两栏 -->
+    <section class="section" style="padding-top: 0;">
+        <h2 class="section-title">适合哪些玩家</h2>
+        <div class="audience-grid">
+            <div class="audience-item">
+                <h4>初学入门</h4>
+                <p>不熟悉番种组合、和牌逻辑的新手，可通过卡片快速建立基本框架，减少牌桌困惑。</p>
+            </div>
+            <div class="audience-item">
+                <h4>常打牌但想复盘</h4>
+                <p>对番种记忆模糊，或遇到不常见的牌型时，可快速对照规则说明，提升准确率。</p>
+            </div>
+            <div class="audience-item">
+                <h4>规则研究员</h4>
+                <p>对比不同规则体系（国标、日本、广东、台湾等）的异同，梳理番种与牌型边界。</p>
+            </div>
+            <div class="audience-item">
+                <h4>线上牌局玩家</h4>
+                <p>在各类麻将应用中遇到不明和牌判定或番种解释时，作为第二参考源。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 自然链接段落 -->
+    <section class="section" style="padding-top: 0;">
+        <h2 class="section-title">从规则到实战</h2>
+        <div class="link-paragraph">
+            <p><strong>麻将胡了</strong> 这个说法在很多牌局中意味着「已经达成和牌条件，准备报牌」。但不同地区、不同规则下，同一手牌可能对应完全不同的番种与得分。如果你希望系统了解主流麻将规则的番种表、和牌牌型图示以及常见判例，可以直接参考 <a href="https://m-index-mahjong.com">麻将胡了</a> 里整理的规则索引——页面按番种类型排列，方便按图索骥。</p>
+            <p style="margin-top: 16px;">另外，许多线上麻将平台会内置简化的番种提示，但底层逻辑可能与标准规则有细微差别。对照索引中的牌型说明，能帮助你更快理解平台为什么会给出某个番值，或者为什么某些组合不被算入。</p>
+        </div>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <section class="section" style="padding-top: 0;">
+        <h2 class="section-title">常见疑问摘要</h2>
+        <div class="faq-summary">
+            <div class="faq-item">
+                <q> 同一手牌同时满足多个番种怎么算？</q>
+                <div class="ans">一般采取「不重复、不拆开、取最高」原则，但国标与日本规则在复合番种处理上略有不同，具体要看规则条目。</div>
+            </div>
+            <div class="faq-item">
+                <q> 立直后能否改变听牌？</q>
+                <div class="ans">立直后不可替换手牌，只能巡巡摸切，直到自摸或点炮和牌。振听状态下只能自摸。</div>
+            </div>
+            <div class="faq-item">
+                <q> 抢杠如何判定？</q>
+                <div class="ans">当其他玩家加杠时，如果所杠之牌恰好是你听的和牌，可以抢杠和牌，一般算点炮。</div>
+            </div>
+            <div class="faq-item">
+                <q> 七对子是否允许有相同顺子？</q>
+                <div class="ans">七对子要求七个不同的对子，不能包含四张相同牌（否则算暗杠+对子，不是七对子）。</div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer-note">
+    <div class="container">
+        内容仅供规则参考，不构成任何博彩或诱导建议 · 理性游戏，量力而行
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>澳门新葡京 · 专题介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f2f2f2;
+      color: #1e1e1e;
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+
+    .page {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    /* hero 横幅 */
+    .hero {
+      background: linear-gradient(145deg, #f9f9f9 0%, #ececec 100%);
+      border: 1px solid #d6d6d6;
+      border-radius: 28px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+      padding: 3.2rem 2.8rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 475;
+      letter-spacing: 1px;
+      color: #2c2c2c;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #5e5e5e;
+      border-top: 1px solid #cbcbcb;
+      display: inline-block;
+      padding-top: 0.65rem;
+      margin-top: 0.3rem;
+    }
+
+    .hero .note {
+      margin-top: 1.2rem;
+      font-size: 0.95rem;
+      color: #6f6f6f;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 0.8rem 1.2rem;
+      border-radius: 60px;
+      display: inline-block;
+      border: 1px solid #d2d2d2;
+    }
+
+    /* 背景说明卡片 */
+    .context-card {
+      background: #ffffff;
+      border: 1px solid #dddddd;
+      border-radius: 24px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.03);
+      padding: 2rem 2.4rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .context-card h2 {
+      font-size: 1.6rem;
+      font-weight: 420;
+      margin-bottom: 1rem;
+      letter-spacing: 0.3px;
+      color: #2e2e2e;
+    }
+
+    .context-card p {
+      margin-bottom: 1rem;
+      color: #383838;
+    }
+
+    .context-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 三段自然介绍 — 卡片网格 */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: 640px) {
+      .intro-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .intro-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .intro-card {
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 22px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+      padding: 1.8rem 1.6rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .intro-card:hover {
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    .intro-card h3 {
+      font-size: 1.25rem;
+      font-weight: 450;
+      color: #2c2c2c;
+      margin-bottom: 0.7rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid #ececec;
+    }
+
+    .intro-card p {
+      font-size: 0.95rem;
+      color: #3b3b3b;
+    }
+
+    /* FAQ 摘要 — 极简手风琴感 */
+    .faq-section {
+      background: #ffffff;
+      border: 1px solid #dfdfdf;
+      border-radius: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      padding: 2rem 2.4rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .faq-section h2 {
+      font-size: 1.5rem;
+      font-weight: 420;
+      margin-bottom: 1.2rem;
+      color: #2a2a2a;
+    }
+
+    .faq-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid #ececec;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 0.35rem;
+    }
+
+    .faq-item span {
+      font-size: 0.9rem;
+      color: #4f4f4f;
+    }
+
+    /* 页尾访问提示 */
+    .footer-note {
+      background: #f7f7f7;
+      border: 1px solid #d9d9d9;
+      border-radius: 30px;
+      padding: 1.8rem 2.4rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.02);
+      margin-top: 1rem;
+    }
+
+    .footer-note p {
+      font-size: 1rem;
+      color: #3a3a3a;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer-note a {
+      color: #2f5a7a;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #8faec9;
+    }
+
+    .footer-note a:hover {
+      border-bottom: 1px solid #2f5a7a;
+    }
+
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: #c0c0c0;
+      margin: 1rem auto 1.2rem auto;
+      opacity: 0.3;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 480px) {
+      .hero {
+        padding: 2rem 1.2rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .context-card, .faq-section, .footer-note {
+        padding: 1.5rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- 首页横幅 hero -->
+    <div class="hero">
+      <h1>澳门新葡京 · 专题</h1>
+      <div class="sub">一个关于辨识与了解的简要页面</div>
+      <div class="note">你正在浏览的网站，与澳门新葡京直接关联</div>
+    </div>
+
+    <!-- 背景说明 -->
+    <div class="context-card">
+      <h2>为什么会有这个页面</h2>
+      <p>
+        很多人第一次打开一个网址时，会想快速确认它到底对应什么品牌或场所。
+        这个页面就是为了回答这样一个简单的问题：<strong>webs-grandlisboa.com</strong> 指向的是哪一家？
+        答案就是——<a href="https://webs-grandlisboa.com" style="color:#2f5a7a; text-decoration:underline; text-underline-offset:2px;">澳门新葡京</a>，一个在澳门拥有相当辨识度的地点。
+      </p>
+      <p>
+        没有复杂的跳转，也无需额外推测。这个页面以平实的叙述，帮你把网站和现实中的场所对应起来。
+        如果你恰好需要了解与澳门新葡京相关的信息，这里或许是一个合适的起点。
+      </p>
+    </div>
+
+    <!-- 三段自然介绍 + 卡片 -->
+    <div class="intro-grid">
+      <div class="intro-card">
+        <h3>快速定位用途</h3>
+        <p>
+          当用户输入或点击一个陌生链接时，第一反应往往是：这是做什么的？<br>
+          本页面直接说明：该域名对应的正是澳门新葡京。你不需要再花时间搜索比对，这里已经给出了明确的指向。
+        </p>
+      </div>
+      <div class="intro-card">
+        <h3>品牌印象</h3>
+        <p>
+          澳门新葡京在澳门当地以及观光客心中都有一定的提及率。它不仅仅是一个地名，
+          更代表了一种融合现代与经典的空间风格。许多人对它的印象停留在灯光、建筑和南湾湖的夜景里。
+        </p>
+      </div>
+      <div class="intro-card">
+        <h3>场景参考</h3>
+        <p>
+          无论是做行程规划、查找背景资料，还是单纯想确认网站对应的实体，
+          这个页面都试图提供一个干净的中间站。你可以在阅读之后，再决定下一步是否要深入了解澳门新葡京的更多细节。
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要（简洁风格） -->
+    <div class="faq-section">
+      <h2>常见疑问摘要</h2>
+      <div class="faq-item">
+        <strong>这个网站是官方站点吗？</strong>
+        <span>本页面只作为介绍用途，帮助你理解域名所指的实体。关于官方信息，建议直接参考澳门新葡京相关的公开资料。</span>
+      </div>
+      <div class="faq-item">
+        <strong>除了介绍，页面还有别的功能吗？</strong>
+        <span>主要功能就是帮助浏览者快速建立认知：webs-grandlisboa.com 与澳门新葡京之间的对应关系。没有多余的操作或跳转。</span>
+      </div>
+      <div class="faq-item">
+        <strong>为什么是澳门新葡京？</strong>
+        <span>因为该域名的指向非常明确，而澳门新葡京本身也是一个在本地及游客中具有较高认知度的地点，值得一个清晰的说明页。</span>
+      </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+      <div class="divider"></div>
+      <p>
+        如果你希望直接浏览与澳门新葡京相关的网站内容，可以访问
+        <a href="https://webs-grandlisboa.com">澳门新葡京</a>。
+        页面内容仅供说明，不构成任何引导或承诺。
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>
